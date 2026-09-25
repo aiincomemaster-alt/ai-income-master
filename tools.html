@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070b16">
+<title>AI Income Master — Tools</title>
+<style>
+:root{--bg:#070b16;--panel:#0d1424;--panel2:#111b2e;--text:#f5f7ff;--muted:#9ca9c4;--line:rgba(255,255,255,.09);--cyan:#58e6ff;--purple:#8b6cff;--green:#39e6a1}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(circle at 20% 0%,rgba(88,230,255,.13),transparent 30%),radial-gradient(circle at 85% 10%,rgba(139,108,255,.16),transparent 30%),var(--bg);color:var(--text);line-height:1.55;min-height:100vh}
+.container{width:min(92%,900px);margin:auto}
+header{padding:18px 0;border-bottom:1px solid var(--line);background:rgba(7,11,22,.82);backdrop-filter:blur(16px)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:15px}.logo{font-weight:900;font-size:20px}.logo span{color:var(--cyan)}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 16px;border-radius:12px;border:1px solid var(--line);background:#151e32;color:#fff;font-weight:800;text-decoration:none;cursor:pointer}
+.btn.primary{background:linear-gradient(135deg,var(--cyan),var(--purple));color:#06101a;border:0}
+main{padding:45px 0}.badge{display:inline-block;border:1px solid rgba(88,230,255,.35);background:rgba(88,230,255,.08);color:var(--cyan);padding:7px 12px;border-radius:999px;font-size:12px;font-weight:800;margin-bottom:15px}
+h1{font-size:clamp(30px,7vw,52px);line-height:1.05;margin-bottom:12px}p{color:var(--muted)}
+.card{margin-top:25px;padding:25px;border-radius:22px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(17,27,46,.94),rgba(10,16,29,.94))}
+label{display:block;font-weight:800;margin:15px 0 8px}
+textarea,input{width:100%;background:#0b1220;border:1px solid var(--line);color:#fff;padding:14px;border-radius:12px;outline:none}
+textarea{min-height:150px;resize:vertical}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}
+#output{white-space:pre-wrap;margin-top:18px;padding:18px;background:#080e1a;border:1px solid var(--line);border-radius:14px;min-height:100px;color:#e9efff}
+.small{font-size:13px;margin-top:10px}
+</style>
+</head>
+<body>
+<header><div class="container top"><div class="logo">AI <span>Income</span> Master</div><a class="btn" href="index.html">← Back</a></div></header>
+<main><div class="container">
+<span class="badge">⚡ AI TOOL</span>
+<h1 id="title">AI Tool</h1>
+<p id="desc">Create useful content with this free tool.</p>
+
+<div class="card">
+<label for="topic">Enter your topic / idea</label>
+<textarea id="topic" placeholder="Example: AI tools for beginners"></textarea>
+<div class="actions">
+<button class="btn primary" id="generate">✨ Generate</button>
+<button class="btn" id="copy">📋 Copy Result</button>
+</div>
+<div id="output">Your generated result will appear here.</div>
+<p class="small">This is a browser-based demo tool. It does not require an external API.</p>
+</div>
+</div></main>
+
+<script>
+const params=new URLSearchParams(location.search);
+const tool=params.get("tool")||"AI Tool";
+const clean=s=>decodeURIComponent(s).replace(/\+/g," ");
+const name=clean(tool);
+document.getElementById("title").textContent=name;
+
+const templates={
+"Viral Caption Generator":t=>`🔥 ${t}\n\nTurn this idea into something people want to read, save and share.\n\nWhat do you think? 👇\n\n#AI #Creator #Trending #ContentCreator`,
+"Viral Hook Generator":t=>`STOP scrolling! 👀\n\nHere is the hook for "${t}":\n\n"${t} — the simple idea most people are missing."`,
+"Reel Script Generator":t=>`REEL SCRIPT — ${t}\n\nHOOK (0–3s):\n“Want to know the fastest way to understand ${t}?”\n\nVALUE (3–20s):\nExplain the problem, give 3 practical points, and show one example.\n\nCTA (20–30s):\n“Follow for more practical AI tips.”`,
+"YouTube Script Generator":t=>`YOUTUBE SCRIPT — ${t}\n\nINTRO:\nToday we are breaking down ${t} in a simple way.\n\nSECTION 1:\nExplain the problem and why it matters.\n\nSECTION 2:\nGive 3 useful examples.\n\nSECTION 3:\nShow a practical action viewers can take today.\n\nOUTRO:\nSubscribe for more practical AI and online-income content.`,
+"Blog Writer":t=>`# ${t}\n\n## Introduction\n${t} is an important topic for creators and beginners.\n\n## Key Points\n1. Understand the basic idea.\n2. Choose one practical use case.\n3. Test it with a small project.\n4. Improve from feedback.\n\n## Conclusion\nStart small, measure the result and build from there.`,
+"Content Ideas Generator":t=>`10 CONTENT IDEAS FOR: ${t}\n\n1. Beginner guide\n2. 5 mistakes to avoid\n3. Step-by-step tutorial\n4. Tools comparison\n5. Myth vs reality\n6. Before/after example\n7. FAQ post\n8. Case-study format\n9. Checklist\n10. 30-second reel`,
+"Bio Generator":t=>`Creator | AI & Digital Skills\nHelping beginners learn practical AI workflows.\nSharing tools, ideas and simple online-income strategies.`,
+"Fiverr Gig Generator":t=>`FIVERR GIG — ${t}\n\nTitle:\nI will create professional ${t} for your business\n\nDescription:\nI provide clear, practical and customized ${t} designed around your goals.\n\nDeliverables:\n• Professional output\n• Revisions\n• Fast communication\n\nCTA:\nMessage me with your requirements.`,
+"Client Proposal Generator":t=>`CLIENT PROPOSAL\n\nHi,\n\nI reviewed your requirement for ${t}. I can help you turn the idea into a clear, professional result.\n\nMy approach:\n1. Understand your goal\n2. Create the first version\n3. Review and refine\n4. Deliver the final files\n\nI would be happy to discuss the details.`,
+"Client Outreach Generator":t=>`OUTREACH MESSAGE\n\nHi! I came across your work and noticed an opportunity around ${t}.\n\nI help businesses/creators improve this with practical AI-assisted workflows. If you're interested, I can share a simple idea tailored to your needs.`,
+"Freelance Pricing Generator":t=>`PRICING STARTER FOR: ${t}\n\nBasic: ₹999 — simple deliverable\nStandard: ₹2,499 — expanded deliverable + revisions\nPremium: ₹4,999 — complete package + priority support\n\nAdjust pricing based on scope, turnaround time and client requirements.`,
+"Prompt Pack Creator":t=>`PROMPT PACK: ${t}\n\nPrompt 1 — Beginner\n“Act as an expert in ${t}. Explain the topic simply with examples.”\n\nPrompt 2 — Advanced\n“Create a detailed step-by-step workflow for ${t}, including common mistakes and improvements.”\n\nPrompt 3 — Content\n“Turn ${t} into 10 social-media content ideas with strong hooks.”`,
+"Product Name Generator":t=>`PRODUCT NAME IDEAS FOR ${t}\n\n1. ${t} Starter Kit\n2. ${t} Pro Blueprint\n3. ${t} Master Guide\n4. ${t} QuickStart System\n5. ${t} Growth Toolkit`,
+"Ad Copy Generator":t=>`AD COPY FOR: ${t}\n\nHeadline: Make ${t} simpler and faster.\n\nBody: Get a practical solution designed to help you save time, improve your workflow and take action.\n\nCTA: Get Started Today`,
+"Email Sequence Generator":t=>`EMAIL SEQUENCE — ${t}\n\nEmail 1: Introduce the problem.\nEmail 2: Share a useful insight.\nEmail 3: Give a practical example.\nEmail 4: Handle common objections.\nEmail 5: Invite the reader to take the next step.`,
+"Business Idea Generator":t=>`BUSINESS IDEA — ${t}\n\nTarget customer: beginners and small businesses.\nProblem: difficulty getting a practical result from ${t}.\nSolution: a simple service/product that delivers a clear outcome.\nRevenue: one-time purchase + optional recurring service.\nFirst step: validate the idea with 5 potential customers.`,
+"Business Plan Outline":t=>`BUSINESS PLAN — ${t}\n\n1. Problem\n2. Target customer\n3. Solution\n4. Offer\n5. Pricing\n6. Marketing channels\n7. Delivery process\n8. Costs\n9. Revenue model\n10. 30-day launch plan`,
+"Profit Calculator":t=>`PROFIT CALCULATION TEMPLATE — ${t}\n\nRevenue − expenses = profit\n\nExample:\nRevenue: ₹10,000\nTools/expenses: ₹2,000\nEstimated profit: ₹8,000\n\nReplace the numbers with your actual figures.`,
+"Marketing Plan Generator":t=>`30-DAY MARKETING PLAN — ${t}\n\nWeek 1: Research audience + competitors\nWeek 2: Publish educational content\nWeek 3: Share proof/examples + outreach\nWeek 4: Review results + improve the offer`,
+"Keyword Idea Generator":t=>`KEYWORD IDEAS FOR: ${t}\n\n${t} for beginners\nbest ${t}\nhow to use ${t}\n${t} tools\n${t} tutorial\n${t} tips\n${t} examples\n${t} workflow`
+};
+
+function fallback(t){return `WORKFLOW FOR: ${t}\n\n1. Define the goal.\n2. Identify the target audience.\n3. Create a simple first version.\n4. Review and improve it.\n5. Turn the result into a reusable template or service.\n\nTopic: ${t}`}
+
+document.getElementById("generate").onclick=()=>{
+ const topic=document.getElementById("topic").value.trim()||name;
+ document.getElementById("output").textContent=(templates[name]||fallback)(topic);
+};
+document.getElementById("copy").onclick=async()=>{
+ const text=document.getElementById("output").textContent;
+ try{await navigator.clipboard.writeText(text);alert("Result copied!")}catch(e){alert("Copy failed. Please select and copy the result manually.")}
+};
+</script>
+</body>
+</html>
