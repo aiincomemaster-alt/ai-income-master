@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070b16">
+<meta name="description" content="AI Income Master — AI tools, earning ideas, prompts, digital products and practical resources.">
+<title>AI Income Master — AI Tools & Online Earning</title>
+<style>
+:root{
+  --bg:#070b16;--panel:#0d1424;--panel2:#111b2e;--text:#f5f7ff;--muted:#9ca9c4;
+  --line:rgba(255,255,255,.09);--cyan:#58e6ff;--purple:#8b6cff;--green:#39e6a1;
+  --danger:#ff5b6e;--max:1180px;--radius:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:
+radial-gradient(circle at 20% 0%,rgba(88,230,255,.13),transparent 30%),
+radial-gradient(circle at 85% 10%,rgba(139,108,255,.16),transparent 30%),var(--bg);
+color:var(--text);line-height:1.55}
+a{text-decoration:none;color:inherit}
+button,input{font:inherit}
+.container{width:min(92%,var(--max));margin:auto}
+header{position:sticky;top:0;z-index:50;background:rgba(7,11,22,.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.logo{font-weight:900;font-size:20px;letter-spacing:-.5px}
+.logo span{color:var(--cyan)}
+.navlinks{display:flex;gap:22px;align-items:center}
+.navlinks a{color:#cbd4e8;font-size:14px}
+.navlinks a:hover{color:#fff}
+.menu{display:none;background:none;border:0;color:#fff;font-size:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 18px;border-radius:12px;border:1px solid var(--line);background:#151e32;color:#fff;font-weight:800;cursor:pointer}
+.btn.primary{background:linear-gradient(135deg,var(--cyan),var(--purple));color:#06101a;border:0}
+.btn.green{background:var(--green);color:#04140e;border:0}
+.hero{padding:78px 0 45px;text-align:center}
+.badge{display:inline-block;border:1px solid rgba(88,230,255,.35);background:rgba(88,230,255,.08);color:var(--cyan);padding:7px 12px;border-radius:999px;font-size:12px;font-weight:800;margin-bottom:18px}
+.hero h1{font-size:clamp(38px,7vw,72px);line-height:1.02;letter-spacing:-2.5px;max-width:900px;margin:auto}
+.hero h1 span{background:linear-gradient(90deg,var(--cyan),#fff,var(--purple));-webkit-background-clip:text;color:transparent}
+.hero p{max-width:720px;margin:20px auto;color:var(--muted);font-size:17px}
+.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:25px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:42px auto 0;max-width:900px}
+.stat{padding:18px;border:1px solid var(--line);background:rgba(13,20,36,.72);border-radius:16px}
+.stat b{display:block;font-size:24px}.stat small{color:var(--muted)}
+section{padding:58px 0}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:24px}
+.section-head h2{font-size:30px;letter-spacing:-1px}.section-head p{color:var(--muted);max-width:650px}
+.searchbox{display:flex;gap:10px;margin-bottom:20px}
+.searchbox input{width:100%;background:#0b1220;border:1px solid var(--line);color:#fff;padding:14px 16px;border-radius:14px;outline:none}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.filter{padding:9px 13px;border-radius:999px;border:1px solid var(--line);background:#0c1424;color:#b9c4d9;cursor:pointer}
+.filter.active,.filter:hover{border-color:var(--cyan);color:#fff;background:rgba(88,230,255,.08)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.card{background:linear-gradient(180deg,rgba(17,27,46,.92),rgba(10,16,29,.92));border:1px solid var(--line);border-radius:var(--radius);padding:18px;transition:.2s}
+.card:hover{transform:translateY(-3px);border-color:rgba(88,230,255,.35)}
+.icon{width:44px;height:44px;display:grid;place-items:center;border-radius:13px;background:rgba(88,230,255,.09);font-size:22px;margin-bottom:14px}
+.card h3{font-size:17px;margin-bottom:6px}.card p{font-size:13px;color:var(--muted);margin-bottom:15px}
+.card .mini{font-size:12px;color:var(--cyan);font-weight:800}
+.earn{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.bigcard{padding:28px;border-radius:26px;border:1px solid var(--line);background:linear-gradient(135deg,rgba(88,230,255,.10),rgba(139,108,255,.10))}
+.bigcard h3{font-size:26px;margin:10px 0}.bigcard p{color:var(--muted);margin-bottom:18px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.step{padding:20px;border:1px solid var(--line);border-radius:18px;background:#0c1322}
+.step b{font-size:28px;color:var(--cyan)}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.price{font-size:32px;font-weight:900;margin:12px 0}.muted{color:var(--muted)}
+.product ul{list-style:none;margin:15px 0}.product li{margin:8px 0;color:#ccd5e8}
+.blog{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.blog .card{min-height:190px}
+footer{border-top:1px solid var(--line);padding:35px 0;color:var(--muted)}
+.footergrid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;place-items:center;padding:20px;z-index:100}
+.modal.show{display:grid}.modalbox{max-width:520px;width:100%;background:#0d1424;border:1px solid var(--line);border-radius:24px;padding:25px}
+.modalbox h3{font-size:24px;margin-bottom:8px}.modalbox p{color:var(--muted);margin-bottom:20px}
+.close{float:right;border:0;background:none;color:#fff;font-size:24px;cursor:pointer}
+.empty{grid-column:1/-1;text-align:center;padding:35px;color:var(--muted)}
+@media(max-width:900px){
+ .grid{grid-template-columns:repeat(2,1fr)}.products,.blog{grid-template-columns:1fr 1fr}
+ .stats{grid-template-columns:repeat(2,1fr)}.earn{grid-template-columns:1fr}.steps{grid-template-columns:1fr}
+}
+@media(max-width:650px){
+ .navlinks{display:none;position:absolute;left:4%;right:4%;top:64px;padding:15px;background:#0b1220;border:1px solid var(--line);border-radius:16px;flex-direction:column;align-items:stretch}
+ .navlinks.open{display:flex}.menu{display:block}.nav .btn{display:none}
+ .hero{padding-top:55px}.hero h1{letter-spacing:-1.5px}.hero p{font-size:15px}
+ .grid,.products,.blog{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:8px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="logo" href="#home">AI <span>Income</span> Master</a>
+    <button class="menu" id="menuBtn" aria-label="Open menu">☰</button>
+    <nav class="navlinks" id="navlinks">
+      <a href="#tools">AI Tools</a><a href="#earn">Earn with AI</a><a href="#products">Products</a><a href="#blog">Blog</a><a href="#contact">Contact</a>
+    </nav>
+    <a class="btn primary" href="#products">Get Starter Kit</a>
+  </div>
+</header>
+
+<main id="home">
+<section class="hero">
+  <div class="container">
+    <span class="badge">⚡ 501 AI Earnings Tools • Prompts • Resources</span>
+    <h1>Learn AI. Build <span>Skills.</span><br>Turn Skills Into Income.</h1>
+    <p>AI Income Master helps creators, freelancers and beginners discover practical AI tools, earning ideas, prompts and digital-product resources.</p>
+    <div class="actions">
+      <a class="btn primary" href="#tools">🚀 Explore AI Tools</a>
+      <a class="btn" href="#earn">💰 Start Earning</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>50+</b><small>Core tools ready</small></div>
+      <div class="stat"><b>501</b><small>Target tool library</small></div>
+      <div class="stat"><b>100+</b><small>Prompt ideas</small></div>
+      <div class="stat"><b>24/7</b><small>Free access</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="tools">
+<div class="container">
+  <div class="section-head"><div><h2>🧰 AI Earnings Tools</h2><p>Search and filter your tool library. Replace the demo actions with your real tool URLs when they are ready.</p></div></div>
+  <div class="searchbox"><input id="toolSearch" placeholder="Search: caption, Fiverr, ebook, pricing..."></div>
+  <div class="filters" id="filters"></div>
+  <div class="grid" id="toolGrid"></div>
+</div>
+</section>
+
+<section id="earn">
+<div class="container">
+ <div class="section-head"><div><h2>💰 Ways to Earn With AI</h2><p>Choose a model, learn the skill, build an offer and start reaching customers.</p></div></div>
+ <div class="earn">
+  <div class="bigcard"><span class="badge">FREELANCING</span><h3>Sell AI-assisted services</h3><p>Offer content, design, research, automation, resume, social-media and business services.</p><a class="btn primary" href="#tools">Find a tool →</a></div>
+  <div class="bigcard"><span class="badge">DIGITAL PRODUCTS</span><h3>Build once, sell repeatedly</h3><p>Create prompt packs, ebooks, templates, workbooks, checklists and mini-courses.</p><a class="btn green" href="#products">See products →</a></div>
+ </div>
+ <div class="steps">
+  <div class="step"><b>01</b><h3>Learn</h3><p class="muted">Pick one skill and one AI workflow.</p></div>
+  <div class="step"><b>02</b><h3>Build</h3><p class="muted">Create a portfolio sample or product.</p></div>
+  <div class="step"><b>03</b><h3>Sell</h3><p class="muted">Reach relevant customers and improve from feedback.</p></div>
+ </div>
+</div>
+</section>
+
+<section id="products">
+<div class="container">
+ <div class="section-head"><div><h2>📦 Digital Products</h2><p>Starter offers for the AI Income Master store. The buttons below are demo checkout actions until you connect a payment provider.</p></div></div>
+ <div class="products">
+  <div class="card product"><div class="icon">📘</div><h3>AI Income Starter Kit</h3><div class="price">₹99</div><p class="muted">Prompts, income ideas, action tracker and beginner resources.</p><ul><li>✓ 100 AI prompts</li><li>✓ 25 earning ideas</li><li>✓ 7-day action plan</li></ul><button class="btn primary buy" data-product="AI Income Starter Kit">Buy / Checkout</button></div>
+  <div class="card product"><div class="icon">🚀</div><h3>AI Income PRO</h3><div class="price">₹999</div><p class="muted">Advanced workflows and ready-to-use business resources.</p><ul><li>✓ Advanced prompts</li><li>✓ Client outreach templates</li><li>✓ Digital-product workflows</li></ul><button class="btn primary buy" data-product="AI Income PRO">Buy / Checkout</button></div>
+  <div class="card product"><div class="icon">👑</div><h3>AI Income MAX</h3><div class="price">₹1,999</div><p class="muted">Expanded resource library for creators and freelancers.</p><ul><li>✓ Full resource bundle</li><li>✓ Templates</li><li>✓ Growth playbooks</li></ul><button class="btn primary buy" data-product="AI Income MAX">Buy / Checkout</button></div>
+ </div>
+</div>
+</section>
+
+<section id="blog">
+<div class="container">
+ <div class="section-head"><div><h2>📝 AI Income Blog</h2><p>Publish practical articles around AI tools, freelancing, digital products and online business.</p></div></div>
+ <div class="blog">
+  <article class="card"><div class="icon">🔥</div><h3>50 AI Tools You Can Use to Save Time</h3><p>Tool categories, workflows and examples for beginners.</p><span class="mini">READ ARTICLE →</span></article>
+  <article class="card"><div class="icon">💼</div><h3>How to Start AI Freelancing</h3><p>A simple service → portfolio → outreach workflow.</p><span class="mini">READ ARTICLE →</span></article>
+  <article class="card"><div class="icon">📦</div><h3>How to Create Your First Digital Product</h3><p>Find a problem, package a solution and validate demand.</p><span class="mini">READ ARTICLE →</span></article>
+ </div>
+</div>
+</section>
+
+<section id="contact">
+<div class="container">
+ <div class="bigcard">
+   <span class="badge">FREE STARTER RESOURCE</span>
+   <h3>Get the AI Income Starter Kit</h3>
+   <p>Use your free resource as the main lead magnet. Replace the button with your WhatsApp, email form or download link.</p>
+   <div class="actions" style="justify-content:flex-start">
+     <a class="btn primary" href="https://wa.me/" target="_blank" rel="noopener">💬 WhatsApp</a>
+     <a class="btn" href="mailto:hello@example.com">✉️ Email</a>
+   </div>
+ </div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="container footergrid">
+ <div><strong>AI Income Master</strong><br><span>AI tools • Skills • Digital products • Earning resources</span></div>
+ <div>© <span id="year"></span> AI Income Master</div>
+</div>
+</footer>
+
+<div class="modal" id="modal">
+ <div class="modalbox">
+   <button class="close" id="closeModal">×</button>
+   <h3 id="modalTitle">Tool</h3>
+   <p id="modalText">This demo card is ready. Connect your real tool page here.</p>
+   <button class="btn primary" id="modalAction">Open Tool</button>
+ </div>
+</div>
+
+<script>
+const tools = [
+["Content & Creator","✍️","Viral Caption Generator"],["Content & Creator","🪝","Viral Hook Generator"],
+["Content & Creator","🎬","Reel Script Generator"],["Content & Creator","▶️","YouTube Script Generator"],
+["Content & Creator","📝","Blog Writer"],["Content & Creator","💡","Content Ideas Generator"],
+["Content & Creator","📖","Story Generator"],["Content & Creator","📅","Content Calendar"],
+["Content & Creator","👤","Personal Brand Builder"],["Content & Creator","🪪","Bio Generator"],
+["Freelancing","🔎","Freelance Niche Finder"],["Freelancing","💼","Upwork Profile Writer"],
+["Freelancing","🛍️","Fiverr Gig Generator"],["Freelancing","📨","Client Proposal Generator"],
+["Freelancing","📣","Client Outreach Generator"],["Freelancing","🔁","Follow-up Message Generator"],
+["Freelancing","🧑‍💻","Portfolio Content Generator"],["Freelancing","💵","Freelance Pricing Generator"],
+["Freelancing","📦","Service Package Builder"],["Freelancing","📋","Client Brief Generator"],
+["Digital Products","📘","Ebook Creator"],["Digital Products","📒","Workbook Creator"],
+["Digital Products","🤖","Prompt Pack Creator"],["Digital Products","🎓","Course Outline Creator"],
+["Digital Products","🧩","Template Creator"],["Digital Products","✅","Checklist Creator"],
+["Digital Products","🗂️","Notion Product Idea Generator"],["Digital Products","🧠","Mini Course Idea Generator"],
+["Digital Products","📚","Guide Creator"],["Digital Products","🏷️","Product Name Generator"],
+["Marketing","📢","Ad Copy Generator"],["Marketing","🎯","Offer Generator"],
+["Marketing","🧲","Lead Magnet Generator"],["Marketing","📧","Email Sequence Generator"],
+["Marketing","📱","Social Media Post Generator"],["Marketing","📊","Marketing Plan Generator"],
+["Marketing","🔍","Keyword Idea Generator"],["Marketing","🏆","Competitor Research Helper"],
+["Marketing","🛒","Product Description Generator"],["Marketing","🧪","A/B Test Idea Generator"],
+["Business","💡","Business Idea Generator"],["Business","🧮","Profit Calculator"],
+["Business","📈","Pricing Strategy Helper"],["Business","🧾","Invoice Text Generator"],
+["Business","⚙️","Automation Idea Generator"],["Business","🤝","Partnership Outreach Generator"],
+["Business","🗺️","Business Roadmap Generator"],["Business","📑","Business Plan Outline"],
+["Business","🧰","AI Tool Idea Generator"],["Business","🚀","SaaS Idea Validator"]
+];
+
+const grid=document.getElementById("toolGrid"), filters=document.getElementById("filters"), search=document.getElementById("toolSearch");
+let active="All";
+const cats=["All",...new Set(tools.map(t=>t[0]))];
+
+cats.forEach(c=>{
+ const b=document.createElement("button"); b.className="filter"+(c==="All"?" active":""); b.textContent=c;
+ b.onclick=()=>{active=c;document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));b.classList.add("active");render()};
+ filters.appendChild(b);
+});
+
+function render(){
+ const q=search.value.toLowerCase().trim();
+ const list=tools.filter(t=>(active==="All"||t[0]===active)&&t[2].toLowerCase().includes(q));
+ grid.innerHTML=list.length?list.map((t,i)=>`
+ <div class="card">
+   <div class="icon">${t[1]}</div><h3>${t[2]}</h3>
+   <p>${t[0]} tool for your AI Income Master library.</p>
+   <button class="btn" onclick="openTool('${t[2].replace(/'/g,"\\'")}')">Open Tool →</button>
+ </div>`).join(""):`<div class="empty">No tools found. Try another search.</div>`;
+}
+search.addEventListener("input",render); render();
+
+const modal=document.getElementById("modal"), modalTitle=document.getElementById("modalTitle");
+function openTool(name){
+ modalTitle.textContent=name;
+ document.getElementById("modalText").textContent="This is the website demo connection point for "+name+". Replace the Open Tool button with your actual tool URL when the tool page is live.";
+ modal.classList.add("show");
+}
+document.getElementById("closeModal").onclick=()=>modal.classList.remove("show");
+modal.onclick=e=>{if(e.target===modal)modal.classList.remove("show")};
+document.getElementById("modalAction").onclick=()=>alert("Connect your real tool URL in the JavaScript before publishing.");
+
+document.querySelectorAll(".buy").forEach(btn=>btn.onclick=()=>{
+ alert(btn.dataset.product+" selected. Connect a payment/checkout link here when you are ready.");
+});
+document.getElementById("menuBtn").onclick=()=>document.getElementById("navlinks").classList.toggle("open");
+document.querySelectorAll(".navlinks a").forEach(a=>a.onclick=()=>document.getElementById("navlinks").classList.remove("open"));
+document.getElementById("year").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
