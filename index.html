@@ -43,13 +43,21 @@ body{
   line-height:1.55;
 }
 
+body.modal-open{
+  overflow:hidden;
+}
+
 a{
   text-decoration:none;
   color:inherit;
 }
 
-button,input{
+button,input,textarea{
   font:inherit;
+}
+
+button{
+  cursor:pointer;
 }
 
 .container{
@@ -74,6 +82,7 @@ header{
   align-items:center;
   justify-content:space-between;
   gap:18px;
+  position:relative;
 }
 
 .logo{
@@ -341,6 +350,17 @@ section{
 
 .tool-button{
   width:100%;
+  margin-top:5px;
+}
+
+.tool-category{
+  display:inline-block;
+  font-size:10px;
+  color:var(--cyan);
+  font-weight:800;
+  letter-spacing:.5px;
+  text-transform:uppercase;
+  margin-bottom:8px;
 }
 
 /* EARNING */
@@ -438,6 +458,13 @@ section{
   text-align:left;
 }
 
+.contact-buttons{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+
 /* FOOTER */
 
 footer{
@@ -462,6 +489,127 @@ footer{
   color:var(--muted);
   border:1px solid var(--line);
   border-radius:18px;
+}
+
+/* MODAL */
+
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(0,0,0,.72);
+  backdrop-filter:blur(8px);
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
+  width:min(620px,100%);
+  max-height:90vh;
+  overflow:auto;
+  background:
+    linear-gradient(
+      145deg,
+      #111b2e,
+      #090f1d
+    );
+  border:1px solid rgba(88,230,255,.22);
+  border-radius:26px;
+  padding:26px;
+  position:relative;
+  box-shadow:0 30px 100px rgba(0,0,0,.55);
+}
+
+.modal-close{
+  position:absolute;
+  top:14px;
+  right:14px;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  background:#0b1220;
+  color:#fff;
+  font-size:22px;
+}
+
+.modal-icon{
+  width:58px;
+  height:58px;
+  display:grid;
+  place-items:center;
+  border-radius:17px;
+  background:rgba(88,230,255,.09);
+  font-size:29px;
+  margin-bottom:16px;
+}
+
+.modal-box h2{
+  font-size:30px;
+  padding-right:45px;
+}
+
+.modal-box .modal-description{
+  color:var(--muted);
+  margin:8px 0 20px;
+}
+
+.prompt-box{
+  background:#070b16;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:16px;
+  margin:18px 0;
+}
+
+.prompt-label{
+  font-size:11px;
+  color:var(--cyan);
+  font-weight:900;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+
+.prompt-text{
+  color:#dce4f5;
+  font-size:14px;
+  white-space:pre-wrap;
+}
+
+.modal-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+
+/* TOAST */
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:25px;
+  transform:translate(-50%,20px);
+  background:#111b2e;
+  color:#fff;
+  border:1px solid rgba(88,230,255,.3);
+  border-radius:12px;
+  padding:12px 18px;
+  opacity:0;
+  pointer-events:none;
+  transition:.25s;
+  z-index:200;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translate(-50%,0);
 }
 
 /* MOBILE */
@@ -550,6 +698,19 @@ footer{
 
   .bigcard{
     padding:22px;
+  }
+
+  .modal{
+    padding:10px;
+  }
+
+  .modal-box{
+    padding:22px;
+    border-radius:20px;
+  }
+
+  .modal-box h2{
+    font-size:24px;
   }
 }
 </style>
@@ -664,7 +825,7 @@ footer{
 
         <p>
           Search and filter your AI tool library.
-          Open any tool to continue to the dedicated tool page.
+          Open any tool to use its ready-made AI workflow.
         </p>
       </div>
 
@@ -863,7 +1024,6 @@ footer{
           <li>✓ 7-day action plan</li>
         </ul>
 
-        <!-- Replace # with your payment link -->
         <a
           class="btn primary checkout"
           href="#"
@@ -897,7 +1057,6 @@ footer{
           <li>✓ Digital-product workflows</li>
         </ul>
 
-        <!-- Replace # with your payment link -->
         <a
           class="btn primary checkout"
           href="#"
@@ -931,7 +1090,6 @@ footer{
           <li>✓ Growth playbooks</li>
         </ul>
 
-        <!-- Replace # with your payment link -->
         <a
           class="btn primary checkout"
           href="#"
@@ -1061,6 +1219,131 @@ footer{
         email form or download link.
       </p>
 
+      <div class="contact-buttons">
+
+        <!-- Replace with your real WhatsApp number -->
+        <a
+          class="btn green"
+          href="https://wa.me/"
+          target="_blank"
+          rel="noopener">
+          💬 WhatsApp
+        </a>
+
+        <!-- Replace with your real email -->
+        <a
+          class="btn"
+          href="mailto:hello@example.com">
+          ✉️ Email
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer>
+
+  <div class="container footergrid">
+
+    <div>
+      <strong>AI Income Master</strong>
+      <div>
+        AI tools • Skills • Digital products • Earning resources
+      </div>
+    </div>
+
+    <div>
+      © <span id="year"></span> AI Income Master
+    </div>
+
+  </div>
+
+</footer>
+
+
+<!-- TOOL MODAL -->
+<div
+  class="modal"
+  id="toolModal"
+  aria-hidden="true">
+
+  <div class="modal-box">
+
+    <button
+      class="modal-close"
+      id="modalClose"
+      type="button"
+      aria-label="Close">
+      ×
+    </button>
+
+    <div
+      class="modal-icon"
+      id="modalIcon">
+      🤖
+    </div>
+
+    <div
+      class="tool-category"
+      id="modalCategory">
+      AI TOOL
+    </div>
+
+    <h2 id="modalTitle">
+      AI Tool
+    </h2>
+
+    <p
+      class="modal-description"
+      id="modalDescription">
+      Tool description
+    </p>
+
+    <div class="prompt-box">
+
+      <div class="prompt-label">
+        Ready-to-use AI Prompt
+      </div>
+
       <div
-        class="actions"
-        style="justify-content
+        class="prompt-text"
+        id="modalPrompt">
+      </div>
+
+    </div>
+
+    <div class="modal-actions">
+
+      <button
+        class="btn primary"
+        id="copyPrompt"
+        type="button">
+        📋 Copy Prompt
+      </button>
+
+      <button
+        class="btn"
+        id="closeTool"
+        type="button">
+        Close
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- TOAST -->
+<div
+  class="toast"
+  
