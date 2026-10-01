@@ -1,1 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07101f">
 
+<title>AI Income Master — AI Tools & Online Earning</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#070b16;
+  color:#f5f7ff;
+  line-height:1.6;
+}
+a{text-decoration:none;color:inherit}
+button,input,textarea,select{font:inherit}
+
+:root{
+  --bg:#070b16;
+  --card:#0e172b;
+  --card2:#111d35;
+  --cyan:#58e6ff;
+  --purple:#8b6cff;
+  --green:#39e6a1;
+  --muted:#9aaaca;
+  --border:rgba(255,255,255,.09);
+}
+
+.container{
+  width:min(1180px,92%);
+  margin:auto;
+}
+
+nav{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(7,11,22,.92);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+}
+
+.nav-inner{
+  min-height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  font-size:25px;
+  font-weight:800;
+}
+
+.logo span{color:var(--cyan)}
+
+.nav-links{
+  display:flex;
+  gap:25px;
+  align-items:center;
+}
+
+.nav-links a{
+  color:#cbd5ef;
+  font-weight:600;
+}
+
+.nav-links a:hover{color:var(--cyan)}
+
+.menu{
+  display:none;
+  border:0;
+  background:none;
+  color:white;
+  font-size:30px;
+  cursor:pointer;
+}
+
+.hero{
+  padding:90px 0 70px;
+  text-align:center;
+  background:
+    radial-gradient(circle at 20% 20%,rgba(88,230,255,.12),transparent 30%),
+    radial-gradient(circle at 80% 30%,rgba(139,108,255,.14),transparent 30%),
+    linear-gradient(135deg,#0a1427,#111e38);
+}
+
+.badge{
+  display:inline-block;
+  padding:11px 20px;
+  border:1px solid rgba(88,230,255,.4);
+  border-radius:50px;
+  color:var(--cyan);
+  background:rgba(88,230,255,.05);
+  font-weight:700;
+  margin-bottom:25px;
+}
+
+h1{
+  font-size:clamp(42px,7vw,76px);
+  line-height:1.03;
+  max-width:900px;
+  margin:auto;
+}
+
+.gradient{
+  background:linear-gradient(90deg,var(--cyan),var(--purple));
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero p{
+  max-width:760px;
+  margin:25px auto;
+  color:#aab7d3;
+  font-size:19px;
+}
+
+.buttons{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+  margin:30px 0;
+}
+
+.btn{
+  border:0;
+  border-radius:14px;
+  padding:16px 25px;
+  cursor:pointer;
+  font-weight:800;
+  transition:.2s;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+.primary{
+  color:#07101f;
+  background:linear-gradient(90deg,var(--cyan),var(--purple));
+}
+
+.secondary{
+  color:white;
+  background:#101b31;
+  border:1px solid var(--border);
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+  margin-top:55px;
+}
+
+.stat{
+  padding:28px 15px;
+  border-radius:22px;
+  background:rgba(8,16,34,.75);
+  border:1px solid var(--border);
+}
+
+.stat strong{
+  display:block;
+  font-size:35px;
+}
+
+.stat span{color:var(--muted)}
+
+section{
+  padding:75px 0;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.section-title h2{
+  font-size:38px;
+}
+
+.section-title p{
+  color:var(--muted);
+  margin-top:8px;
+}
+
+/* TOOLS */
+
+.tools-box{
+  background:#0a1223;
+  border:1px solid var(--border);
+  padding:25px;
+  border-radius:25px;
+}
+
+.search{
+  width:100%;
+  padding:17px 20px;
+  background:#080f1f;
+  color:white;
+  border:1px solid var(--border);
+  border-radius:14px;
+  outline:none;
+}
+
+.search:focus{border-color:var(--cyan)}
+
+.filters{
+  display:flex;
+  gap:10px;
+  overflow:auto;
+  padding:18px 0;
+}
+
+.filter{
+  white-space:nowrap;
+  padding:10px 16px;
+  border-radius:30px;
+  border:1px solid var(--border);
+  background:#101a30;
+  color:#ccd5ea;
+  cursor:pointer;
+}
+
+.filter.active,
+.filter:hover{
+  background:var(--cyan);
+  color:#06101d;
+}
+
+.tool-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.tool{
+  padding:22px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  transition:.2s;
+}
+
+.tool:hover{
+  transform:translateY(-3px);
+  border-color:rgba(88,230,255,.4);
+}
+
+.tool-icon{font-size:30px}
+
+.tool h3{
+  margin:8px 0;
+}
+
+.tool p{
+  color:var(--muted);
+  font-size:14px;
+  min-height:45px;
+}
+
+.tool button{
+  width:100%;
+  margin-top:15px;
+  padding:12px;
+  border:0;
+  border-radius:10px;
+  background:#172541;
+  color:white;
+  cursor:pointer;
+  font-weight:700;
+}
+
+.tool button:hover{background:#22375c}
+
+/* EARNING */
+
+.earning-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+}
+
+.earning-card{
+  background:linear-gradient(145deg,#0d182c,#101d36);
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:30px;
+}
+
+.earning-card h3{
+  font-size:25px;
+  margin-bottom:10px;
+}
+
+.earning-card p{color:var(--muted)}
+
+.earning-card ul{
+  list-style:none;
+  margin-top:20px;
+}
+
+.earning-card li{
+  padding:8px 0;
+}
+
+/* PRODUCTS */
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.product{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:30px;
+  position:relative;
+}
+
+.product.featured{
+  border-color:var(--cyan);
+  box-shadow:0 0 35px rgba(88,230,255,.08);
+}
+
+.product .tag{
+  position:absolute;
+  top:18px;
+  right:18px;
+  font-size:12px;
+  background:var(--cyan);
+  color:#07101f;
+  padding:5px 10px;
+  border-radius:20px;
+  font-weight:800;
+}
+
+.product h3{font-size:25px}
+
+.price{
+  font-size:42px;
+  font-weight:900;
+  margin:15px 0;
+}
+
+.product ul{
+  list-style:none;
+  color:#bdc9df;
+  margin:20px 0;
+}
+
+.product li{padding:7px 0}
+
+/* BLOG */
+
+.blog-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.blog{
+  padding:25px;
+  background:#0e172b;
+  border:1px solid var(--border);
+  border-radius:20px;
+}
+
+.blog span{
+  color:var(--cyan);
+  font-size:13px;
+}
+
+.blog h3{margin:10px 0}
+
+.blog p{color:var(--muted)}
+
+/* CTA */
+
+.cta{
+  text-align:center;
+  background:
+    radial-gradient(circle at center,rgba(88,230,255,.12),transparent 55%),
+    #0a1325;
+  border:1px solid var(--border);
+  border-radius:30px;
+  padding:55px 25px;
+}
+
+.cta h2{font-size:42px}
+
+/* FOOTER */
+
+footer{
+  padding:35px 0;
+  border-top:1px solid var(--border);
+  text-align:center;
+  color:#7f8daa;
+}
+
+/* MODAL */
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.75);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:2000;
+  padding:20px;
+}
+
+.modal.show{display:flex}
+
+.modal-box{
+  width:min(650px,100%);
+  background:#0c1629;
+  border:1px solid rgba(88,230,255,.3);
+  border-radius:24px;
+  padding:25px;
+  max-height:90vh;
+  overflow:auto;
+}
+
+.modal-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.close{
+  border:0;
+  background:none;
+  color:white;
+  font-size:28px;
+  cursor:pointer;
+}
+
+.tool-input{
+  width:100%;
+  min-height:150px;
+  margin:20px 0;
+  padding:15px;
+  resize:vertical;
+  border-radius:14px;
+  background:#070d1b;
+  color:white;
+  border:1px solid var(--border);
+  outline:none;
+}
+
+.result{
+  display:none;
+  padding:18px;
+  border-radius:14px;
+  background:#07101f;
+  border:1px solid var(--border);
+  margin-top:15px;
+  white-space:pre-wrap;
+}
+
+.result.show{display:block}
+
+.copy{
+  margin-top:12px;
+  display:none;
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+  .nav-links{
+    position:absolute;
+    top:72px;
+    left:0;
+    right:0;
+    background:#080f1e;
+    display:none;
+    flex-direction:column;
+    padding:20px;
+    border-bottom:1px solid var(--border);
+  }
+
+  .nav-links.show{display:flex}
+
+  .menu{display:block}
+
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .tool-grid,
+  .products,
+  .blog-grid{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:600px){
+  .hero{padding:60px 0}
+
+  h1{font-size:42px}
+
+  .hero p{font-size:16px}
+
+  .stats,
+  .tool-grid,
+  .earning-grid,
+  .products,
+  .blog-grid{
+    grid-template-columns:1fr;
+  }
+
+  .section-title h2{font-size:31px}
+
+  .cta h2{font-size:32px}
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="container nav-inner">
+
+    <a href="#home" class="logo">
+      AI <span>Income</span> Master
+    </a>
+
+    <button class="menu" onclick="toggleMenu()">☰</button>
+
+    <div class="nav-links" id="navLinks">
+      <a href="#tools" onclick="closeMenu()">AI Tools</a>
+      <a href="#earning" onclick="closeMenu()">Earn with AI</a>
+      <a href="#products" onclick="closeMenu()">Products</a>
+      <a href="#blog" onclick="closeMenu()">Blog</a>
+      <a href="#contact" onclick="closeMenu()">Contact</a>
+    </div>
+
+  </div>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="container">
+
+    <div class="badge">
+      ⚡ 501 AI Earnings Tools • Prompts • Resources
+    </div>
+
+    <h1>
+      Learn AI. Build <span class="gradient">Skills.</span><br>
+      Turn Skills Into Income.
+    </h1>
+
+    <p>
+      AI Income Master helps creators, freelancers and beginners
+      discover practical AI tools, earning ideas, prompts and
+      digital-product resources.
+    </p>
+
+    <div class="buttons">
+      <a href="#tools" class="btn primary">
+        🚀 Explore AI Tools
+      </a>
+
+      <a href="#earning" class="btn secondary">
+        💰 Start Earning
+      </a>
+    </div>
+
+    <div class="stats">
+
+      <div class="stat">
+        <strong>50+</strong>
+        <span>Core tools ready</span>
+      </div>
+
+      <div class="stat">
+        <strong>501</strong>
+        <span>Target tool library</span>
+      </div>
+
+      <div class="stat">
+        <strong>100+</strong>
+        <span>Prompt ideas</span>
+      </div>
+
+      <div class="stat">
+        <strong>24/7</strong>
+        <span>Free access</span>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- TOOLS -->
+<section id="tools">
+
+<div class="container">
+
+  <div class="section-title">
+    <h2>⚡ AI Income Tools</h2>
+    <p>Choose a tool and create your first result.</p>
+  </div>
+
+  <div class="tools-box">
+
+    <input
+      id="toolSearch"
+      class="search"
+      type="search"
+      placeholder="Search caption, Fiverr, ebook, pricing..."
+      oninput="searchTools()"
+    >
+
+    <div class="filters">
+
+      <button class="filter active"
+        onclick="filterTools('all',this)">
+        All
+      </button>
+
+      <button class="filter"
+        onclick="filterTools('content',this)">
+        🎬 Content
+      </button>
+
+      <button class="filter"
+        onclick="filterTools('freelance',this)">
+        💼 Freelancing
+      </button>
+
+      <button class="filter"
+        onclick="filterTools('product',this)">
+        📦 Digital Products
+      </button>
+
+    </div>
+
+    <div class="tool-grid" id="toolGrid"></div>
+
+  </div>
+
+</div>
+
+</section>
+
+
+<!-- EARNING -->
+<section id="earning">
+
+<div class="container">
+
+  <div class="section-title">
+    <h2>💰 Earn With AI</h2>
+    <p>Practical paths you can explore.</p>
+  </div>
+
+  <div class="earning-grid">
+
+    <div class="earning-card">
+      <h3>💼 AI Freelancing</h3>
+      <p>
+        Use AI tools to build services and help clients.
+      </p>
+
+      <ul>
+        <li>✅ Content writing</li>
+        <li>✅ Social media services</li>
+        <li>✅ Thumbnail & design services</li>
+        <li>✅ AI automation services</li>
+        <li>✅ Resume/CV services</li>
+      </ul>
+    </div>
+
+    <div class="earning-card">
+      <h3>📦 Digital Products</h3>
+      <p>
+        Create useful digital resources and sell them online.
+      </p>
+
+      <ul>
+        <li>✅ Prompt packs</li>
+        <li>✅ Ebooks</li>
+        <li>✅ Templates</li>
+        <li>✅ Workbooks</li>
+        <li>✅ Mini courses</li>
+      </ul>
+    </div>
+
+  </div>
+
+</div>
+
+</section>
+
+
+<!-- PRODUCTS -->
+<section id="products">
+
+<div class="container">
+
+  <div class="section-title">
+    <h2>🚀 AI Income Master Products</h2>
+    <p>Start with the resource that fits your current level.</p>
+  </div>
+
+  <div class="products">
+
+    <div class="product">
+
+      <h3>AI Income Starter</h3>
+
+      <div class="price">₹99</div>
+
+      <ul>
+        <li>✅ 100 AI prompts</li>
+        <li>✅ 25 earning ideas</li>
+        <li>✅ 7-day action plan</li>
+        <li>✅ Beginner resources</li>
+      </ul>
+
+      <button
+        class="btn primary"
+        onclick="buyProduct('AI Income Starter — ₹99')">
+        Get Starter Kit
+      </button>
+
+    </div>
+
+
+    <div class="product featured">
+
+      <div class="tag">POPULAR</div>
+
+      <h3>AI Income PRO</h3>
+
+      <div class="price">₹999</div>
+
+      <ul>
+        <li>✅ Advanced AI prompts</li>
+        <li>✅ Client outreach templates</li>
+        <li>✅ Freelancing workflows</li>
+        <li>✅ Digital product workflows</li>
+      </ul>
+
+      <button
+        class="btn primary"
+        onclick="buyProduct('AI Income PRO — ₹999')">
+        Get PRO
+      </button>
+
+    </div>
+
+
+    <div class="product">
+
+      <h3>AI Income MAX</h3>
+
+      <div class="price">₹1,999</div>
+
+      <ul>
+        <li>✅ Complete prompt library</li>
+        <li>✅ Product creation system</li>
+        <li>✅ Freelancing resources</li>
+        <li>✅ Advanced earning workflows</li>
+      </ul>
+
+      <button
+        class="btn primary"
+        onclick="buyProduct('AI Income MAX — ₹1,999')">
+        Get MAX
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+</section>
+
+
+<!-- BLOG -->
+<section id="blog">
+
+<div class="container">
+
+  <div class="section-title">
+    <h2>🔥 AI Earning Ideas</h2>
+    <p>Learn practical ways to turn AI skills into useful services.</p>
+  </div>
+
+  <div class="blog-grid">
+
+    <article class="blog">
+      <span>AI FREELANCING</span>
+      <h3>How to Start AI Freelancing</h3>
+      <p>
+        Choose one service, create sample work and start
+        contacting potential clients.
+      </p>
+    </article>
+
+    <article class="blog">
+      <span>DIGITAL PRODUCTS</span>
+      <h3>How to Create an AI Prompt Pack</h3>
+      <p>
+        Organize useful prompts around one specific problem
+        and package them into a simple digital product.
+      </p>
+    </article>
+
+    <article class="blog">
+      <span>CONTENT</span>
+      <h3>AI Content Creation Workflow</h3>
+      <p>
+        Use AI for research, ideas, scripts and content planning,
+        then add your own editing and expertise.
+      </p>
+    </article>
+
+  </div>
+
+</div>
+
+</section>
+
+
+<!-- CTA -->
+<section id="contact">
+
+<div class="container">
+
+  <div class="cta">
+
+    <h2>
+      Start Building With AI
+    </h2>
+
+    <p style="color:#9aaaca;margin:15px 0 25px">
+      Explore the tools and create your first AI-powered result.
+    </p>
+
+    <div class="buttons">
+
+      <a href="#tools" class="btn primary">
+        🚀 Explore Tools
+      </a>
+
+      <button class="btn secondary" onclick="contactWhatsApp()">
+        💬 Contact on WhatsApp
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+</section>
+
+
+<footer>
+  <div class="container">
+    © 2026 AI Income Master • AI Tools & Online Earning
+  </div>
+</footer>
+
+
+<!-- TOOL MODAL -->
+<div class="modal" id="toolModal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+
+      <h2 id="modalTitle">
+        AI Tool
+      </h2>
+
+      <button class="close" onclick="closeModal()">
+        ×
+      </button>
+
+    </div>
+
+    <p id="modalDescription" style="color:#9aaaca"></p>
+
+    <textarea
+      id="toolInput"
+      class="tool-input"
+      placeholder="Enter your topic, service, product or idea..."
+    ></textarea>
+
+    <button
+      class="btn primary"
+      style="width:100%"
+      onclick="generateResult()">
+      ✨ Generate Result
+    </button>
+
+    <div id="result" class="result"></div>
+
+    <button
+      id="copyBtn"
+      class="btn secondary copy"
+      onclick="copyResult()">
+      📋 Copy Result
+    </button>
+
+  </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   AI TOOL DATABASE
+========================= */
+
+const tools = [
+
+{
+ name:"Viral Caption Generator",
+ icon:"✍️",
+ category:"content",
+ description:"Create engaging social media captions.",
+ prompt:"caption"
+},
+
+{
+ name:"Viral Hook Generator",
+ icon:"🔥",
+ category:"content",
+ description:"Generate attention-grabbing hooks.",
+ prompt:"hook"
+},
+
+{
+ name:"Reel Script Generator",
+ icon:"🎬",
+ category:"content",
+ description:"Create short-form video scripts.",
+ prompt:"reel"
+},
+
+{
+ name:"YouTube Script Generator",
+ icon:"▶️",
+ category:"content",
+ description:"Create a structured YouTube video script.",
+ prompt:"youtube"
+},
+
+{
+ name:"Blog Writer",
+ icon:"📝",
+ category:"content",
+ description:"Create a useful blog article structure.",
+ prompt:"blog"
+},
+
+{
+ name:"Content Ideas Generator",
+ icon:"💡",
+ category:"content",
+ description:"Generate content ideas around your topic.",
+ prompt:"ideas"
+},
+
+{
+ name:"Personal Brand Builder",
+ icon:"👤",
+ category:"content",
+ description:"Create a personal-brand content direction.",
+ prompt:"brand"
+},
+
+{
+ name:"Bio Generator",
+ icon:"✨",
+ category:"content",
+ description:"Generate a professional social bio.",
+ prompt:"bio"
+},
+
+{
+ name:"Freelance Niche Finder",
+ icon:"🎯",
+ category:"freelance",
+ description:"Find possible freelance service niches.",
+ prompt:"niche"
+},
+
+{
+ name:"Fiverr Gig Generator",
+ icon:"🛒",
+ category:"freelance",
+ description:"Create a Fiverr gig structure.",
+ prompt:"fiverr"
+},
+
+{
+ name:"Upwork Profile Writer",
+ icon:"💼",
+ category:"freelance",
+ description:"Create an Upwork profile draft.",
+ prompt:"upwork"
+},
+
+{
+ name:"Client Proposal Generator",
+ icon:"📄",
+ category:"freelance",
+ description:"Create a client proposal.",
+ prompt:"proposal"
+},
+
+{
+ name:"Client Outreach Generator",
+ icon:"📨",
+ category:"freelance",
+ description:"Create a client outreach message.",
+ prompt:"outreach"
+},
+
+{
+ name:"Follow-up Message Generator",
+ icon:"🔄",
+ category:"freelance",
+ description:"Create a professional follow-up.",
+ prompt:"followup"
+},
+
+{
+ name:"Freelance Pricing Generator",
+ icon:"💰",
+ category:"freelance",
+ description:"Create a service pricing structure.",
+ prompt:"pricing"
+},
+
+{
+ name:"Service Package Builder",
+ icon:"📦",
+ category:"freelance",
+ description:"Build a freelance service package.",
+ prompt:"package"
+},
+
+{
+ name:"Ebook Creator",
+ icon:"📚",
+ category:"product",
+ description:"Create an ebook outline.",
+ prompt:"ebook"
+},
+
+{
+ name:"Prompt Pack Creator",
+ icon:"🤖",
+ category:"product",
+ description:"Create a prompt-pack structure.",
+ prompt:"prompt"
+},
+
+{
+ name:"Course Outline Creator",
+ icon:"🎓",
+ category:"product",
+ description:"Create a digital course outline.",
+ prompt:"course"
+},
+
+{
+ name:"Template Creator",
+ icon:"🧩",
+ category:"product",
+ description:"Create a digital template product idea.",
+ prompt:"template"
+},
+
+{
+ name:"Workbook Creator",
+ icon:"📖",
+ category:"product",
+ description:"Create a practical workbook structure.",
+ prompt:"workbook"
+}
+
+];
+
+let currentTool=null;
+let currentCategory="all";
+
+
+/* =========================
+   DISPLAY TOOLS
+========================= */
+
+function renderTools(){
+
+  const grid=document.getElementById("toolGrid");
+
+  const search=document
+    .getElementById("toolSearch")
+    .value
+    .toLowerCase()
+    .trim();
+
+  const filtered=tools.filter(tool=>{
+
+    const matchesCategory=
+      currentCategory==="all" ||
+      tool.category===currentCategory;
+
+    const matchesSearch=
+      !search ||
+      tool.name.toLowerCase().includes(search) ||
+      tool.description.toLowerCase().includes(search);
+
+    return matchesCategory && matchesSearch;
+
+  });
+
+  if(!filtered.length){
+
+    grid.innerHTML=`
+      <div style="grid-column:1/-1;text-align:center;padding:40px;color:#9aaaca">
+        No tool found. Try another search.
+      </div>
+    `;
+
+    return;
+  }
+
+  grid.innerHTML=filtered.map((tool,index)=>`
+
+    <div class="tool">
+
+      <div class="tool-icon">${tool.icon}</div>
+
+      <h3>${tool.name}</h3>
+
+      <p>${tool.description}</p>
+
+      <button onclick="openTool('${tool.prompt}')">
+        Open Tool →
+      </button>
+
+    </div>
+
+  `).join("");
+
+}
+
+renderTools();
+
+
+/* =========================
+   FILTER
+========================= */
+
+function filterTools(category,button){
+
+  currentCategory=category;
+
+  document
+    .querySelectorAll(".filter")
+    .forEach(x=>x.classList.remove("activ
